@@ -122,7 +122,7 @@ module Jekyll
     # Returns this configuration, overridden by the values in the file
     def read_config_file(file)
       next_config = YAML.safe_load_file(file)
-      raise ArgumentError.new("Configuration file: (INVALID) #{file}".yellow) if !next_config.is_a?(Hash)
+      raise ArgumentError.new("Configuration file: (INVALID) #{file}".yellow) unless next_config.is_a?(Hash)
       Jekyll.logger.info "Configuration file:", file
       next_config
     rescue SystemCallError
